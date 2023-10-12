@@ -6,13 +6,24 @@ namespace CatWorx.BadgeMaker //namespace our container for our program
         public string LastName; //stores employees last name to be publically used throughout program
         public int Id; //assigns an id to each employee
         public string PhotoUrl; //links a url of a photo to each employee
-        public Employee(string firstName, string lastName) { //our class constructor for our Employee class
+        public Employee(string firstName, string lastName, int id, string photoUrl)
+        { //our class constructor for our Employee class
             FirstName = firstName;
             LastName = lastName;
+            Id = id;
+            PhotoUrl = photoUrl;
         }
 
-    public string GetFullName() {
-        return FirstName + " " + LastName;
-    }
+        public string GetFullName()
+        {
+            return FirstName + " " + LastName;
+        }
+        public int GetId() 
+        {
+            return Id;
+        }
+        public string GetPhotoUrl() {
+            return PhotoUrl;
+        }
     }
 }
