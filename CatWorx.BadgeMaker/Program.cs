@@ -7,7 +7,7 @@ namespace CatWorx.BadgeMaker //our entry point to our file. Like a container to 
     {
         static List<Employee> GetEmployees() //we are creating a method as an empty list to store a list of strings classified as employees
         {
-            List<string> employees = new List<string>(); //we are creating an empty list of strings to populate with our argument 'employees'
+            List<Employee> employees = new List<Employee>(); //we are creating an empty list of strings to populate with our argument 'employees'
             while (true) //we are creating a while loop that will continue while the following conditions are true
             {
 
@@ -28,7 +28,7 @@ namespace CatWorx.BadgeMaker //our entry point to our file. Like a container to 
                 string photoUrl = Console.ReadLine() ?? "";
 
                 Employee currentEmployee = new Employee(firstName, lastName, id, photoUrl); //create an instance of our Employee() class and add employee information using class
-                employees.Add(currentEmployee); //this built in 'Add' method adds the strings we inputted in the console during the while loop to the list of strings
+                 employees.Add(currentEmployee); //this built in 'Add' method adds the strings we inputted in the console during the while loop to the list of strings
             }
             return employees; //this line returns our newly forumlated list of employees fufilling our agreeent to create a new List with a string of employees
         }
