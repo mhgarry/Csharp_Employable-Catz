@@ -36,7 +36,8 @@ namespace CatWorx.BadgeMaker //our entry point to our file. Like a container to 
         {
             for (int i = 0; i < employees.Count; i++) //iterate through the list of employees
             {
-                Console.WriteLine(employees[i].GetFullName()); //write each indexed employee individually to the console
+                string employeeTemplate = "{0, -10}\t{1, -20}\t{2}"; //formatting our templated string
+                Console.WriteLine(String.Format(employeeTemplate, employees[i].GetId(), employees[i].GetFullName(), employees[i].GetPhotoUrl())); //write each indexed employee and their information individually to the console 
             }
         }
         static void Main(string[] args) //our entry point to our program that will consume both of our methods to make a program that takes input from the console and prints it out
