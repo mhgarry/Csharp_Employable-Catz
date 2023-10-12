@@ -32,18 +32,10 @@ namespace CatWorx.BadgeMaker //our entry point to our file. Like a container to 
             }
             return employees; //this line returns our newly forumlated list of employees fufilling our agreeent to create a new List with a string of employees
         }
-        static void PrintEmployees(List<Employee> employees) //we are creating a method to print our list of employees to the conosle. Threfore we are inputting our List generated from our method GetEmployees()
-        {
-            for (int i = 0; i < employees.Count; i++) //iterate through the list of employees
-            {
-                string employeeTemplate = "{0, -10}\t{1, -20}\t{2}"; //formatting our templated string
-                Console.WriteLine(String.Format(employeeTemplate, employees[i].GetId(), employees[i].GetFullName(), employees[i].GetPhotoUrl())); //write each indexed employee and their information individually to the console 
-            }
-        }
         static void Main(string[] args) //our entry point to our program that will consume both of our methods to make a program that takes input from the console and prints it out
         {
             List<Employee> employees = GetEmployees(); //Starts our get employees function method when called as an argument and returns our list of employees
-            PrintEmployees(employees); //recieves our list of employees from our GetEmployees() method and prints them to the console
+            Util.PrintEmployees(employees); //recieves our list of employees from our GetEmployees() method and prints them to the console
         }
     }
 }
