@@ -19,8 +19,8 @@ namespace CatWorx.BadgeMaker //our entry point to our file. Like a container to 
                 {
                     break;
                 } // the escape clause to the while loop. The loop is true until an empty string is input into the console whcih means the program will keep running until then
-                Employee currentEmployee = new Employee(input); //create an instance of our Employee() class and add employee information using class
-                employees.Add(input); //this built in 'Add' method adds the strings we inputted in the console during the while loop to the list of strings
+                Employee currentEmployee = new Employee(input, "Smith"); //create an instance of our Employee() class and add employee information using class
+                employees.Add(currentEmployee.GetFullName()); //this built in 'Add' method adds the strings we inputted in the console during the while loop to the list of strings
             }
             return employees; //this line returns our newly forumlated list of employees fufilling our agreeent to create a new List with a string of employees
         }

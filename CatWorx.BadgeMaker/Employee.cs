@@ -10,5 +10,9 @@ namespace CatWorx.BadgeMaker //namespace our container for our program
             FirstName = firstName;
             LastName = lastName;
         }
+
+    public string GetFullName() {
+        return FirstName + " " + LastName;
+    }
     }
 }
