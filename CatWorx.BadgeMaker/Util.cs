@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 
 namespace CatWorx.BadgeMaker //namespace
@@ -14,11 +15,16 @@ namespace CatWorx.BadgeMaker //namespace
             }
         }
         public static void MakeCSV(List<Employee> employees)
-        {
-            //where we'll make our csv file
+        {   // check if data directory exists
+            if ( !Directory.Exists("data"))
+            {   //if doesn't exist create directory
+                Directory.CreateDirectory("data");
+                using (StreamWriter file = new StreamWriter("data/employees.csv"))
+                {
+                    // logic to allow streamriter to write data to file
+                }
+            }
         }
-        //create a data folder
-        //create a file in the data folder to hold the csv file called employees.csv
         //Loop over the given employeees 
         //Write each employee's info as a comma-seperated string using csv file
 
