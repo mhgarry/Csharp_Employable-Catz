@@ -36,10 +36,10 @@ namespace CatWorx.BadgeMaker //namespace
                 }
             }
         }
-        public static void MakeBadges(List<Employee> employees)
+        async public static Task MakeBadges(List<Employee> employees)
         {  
            //makes an instance of the http client that is disposed after codeblock runs
-           using(HttpClient client = new HttpClient())
+           using(HttpClient client = new HttpClient()) //used to make url into a stream of data to be handled by the SKImage library to create an image
            {
             for (int i = 0; i < employees.Count; i++)
             {
