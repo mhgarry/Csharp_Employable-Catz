@@ -1,9 +1,8 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data.Common;
 using SkiaSharp;
+using System.ComponentModel;
 
 namespace CatWorx.BadgeMaker //namespace
 {
@@ -18,32 +17,26 @@ namespace CatWorx.BadgeMaker //namespace
             }
         }
         public static void MakeCSV(List<Employee> employees)
-        {   // check if data directory exists
+        {
+            // check if data directory exists
             if ( !Directory.Exists("data"))
-            {   //if doesn't exist create directory
+            {   //create directory if doesn't exist
                 Directory.CreateDirectory("data");
-                //use StreamWRiter to write a new .csv file of employees
-            }
-            using (StreamWriter file = new StreamWriter("data/employees.csv"))
-            {   //write "ID, Nmae, and PhotoUrl" into file
-                file.WriteLine("ID,Name,PhotoUrl");
-
-                    //loop over employees
-                for (int i = 0; i < employees.Count; i++)
-                {
-                    //write each employee to the csv file 
-                    string employeeTemplate = "{0},{1},{2}";
-                    file.WriteLine(String.Format(employeeTemplate, employees[i].GetId(), employees[i].GetFullName(), employees[i].GetPhotoUrl()));                        
+                //use streamwriter to make a file called employees.csv
+                using (StreamWriter file = new StreamWriter("data/employees.csv"))
+                {   //write line "ID,Name, PhtoUrl" to csv file
+                    file.WriteLine("ID,Name,PhotoUrl");
+                    //loop through employees``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+                    for (int i = 0; i < employees.Count; i++)
+                    {
+                        //write each employee to csv file
+                    string badgeTemplate = "{0},{1},{2}";// make a badge template using the 3 arguemnts representing id, name, and photourl
+                    file.WriteLine(String.Format(badgeTemplate, employees[i].GetId(), employees[i].GetFullName(), employees[i].GetPhotoUrl()));
+                    }
                 }
             }
         }
-        public static void MakeBadges(List<Employee> employees)
-        {
-         //create image 
-        SKImage newImage = SKImage.FromEncodedData(File.OpenRead("badge.png"));
-        // save image to data and encode it to write it to a png file
-        SKData data = newImage.Encode();
-        //create file in data called employeeBadge.png
-        data.SaveTo(File.OpenWrite("data/employeeBadge.png"));
+    
     }
 }
+
