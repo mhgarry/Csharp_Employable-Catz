@@ -1,3 +1,7 @@
+using System;
+using System.IO;
+using System.Collections.Generic;
+
 namespace CatWorx.BadgeMaker //namespace
 {
     class Util //class for utility methods/functions
@@ -10,10 +14,26 @@ namespace CatWorx.BadgeMaker //namespace
                 Console.WriteLine(String.Format(employeeTemplate, employees[i].GetId(), employees[i].GetFullName(), employees[i].GetPhotoUrl())); //write each indexed employee and their information individually to the console 
             }
         }
-        //create a method to make a csv file
-        //call the method in the Program.cs file and pass the employee info list into it
-        //create a data folder
-        //create a file in the data folder to hold the csv file called employees.csv
+        public static void MakeCSV(List<Employee> employees)
+        {   // check if data directory exists
+            if ( !Directory.Exists("data"))
+            {   //if doesn't exist create directory
+                Directory.CreateDirectory("data");
+                //use StreamWRiter to write a new .csv file of employees
+                using (StreamWriter file = new StreamWriter("data/employees.csv"))
+                {   //write "ID, Nmae, and PhotoUrl" into file
+                    file.WriteLine("ID,Name,PhotoUrl");
+
+                    //loop over employees
+                    for (int i = 0; i < employees.Count; i++)
+                    {
+                        //write each employee to the csv file 
+                        string employeeTemplate = "{0},{1},{2}";
+                        file.WriteLine(String.Format(employeeTemplate, employees[i].GetId(), employees[i].GetFullName(), employees[i].GetPhotoUrl()));                        
+                    }
+                }
+            }
+        }
         //Loop over the given employeees 
         //Write each employee's info as a comma-seperated string using csv file
 
