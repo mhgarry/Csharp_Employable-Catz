@@ -1,8 +1,8 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Net.Http;
 using SkiaSharp;
-using System.ComponentModel;
 
 namespace CatWorx.BadgeMaker //namespace
 {
@@ -36,6 +36,25 @@ namespace CatWorx.BadgeMaker //namespace
                 }
             }
         }
+        public static void MakeBadges(List<Employee> employees)
+        {  
+           //makes an instance of the http client that is disposed after codeblock runs
+           using(HttpClient client = new HttpClient())
+           {
+            for (int i = 0; i < employees.Count; i++)
+            {
+                // convert url into skimage
+                //convert badge template into skimage
+                // place image on canvas
+            }
+           }
+        //    //make new image 
+        //    SKImage newImage = SKImage.FromEncodedData(File.OpenRead("badge.png"));
+        //    //Encode image into writable data
+        //    SKData data = newImage.Encode();
+        //    //save data to a new file called employeeBadge.png
+        //    data.SaveTo(File.OpenWrite("data/employeeBadge.png"));
+        // }
     }
 }
 
