@@ -36,15 +36,6 @@ namespace CatWorx.BadgeMaker //namespace
                 }
             }
         }
-        // public static void MakeBadges(List<Employee> employees)
-        // {
-        //     //Create iamge
-        //     SKImage newImage = SKImage.FromEncodedData(File.OpenRead("badge.png"));
-        //     //encode the image to save it to a stream
-        //     SKData data = newImage.Encode();
-        //     // write data to file employeeBadge.png 
-        //     data.SaveTo(File.OpenWrite("data/employeeBadge.png"));
-        // }
     }
 }
 
