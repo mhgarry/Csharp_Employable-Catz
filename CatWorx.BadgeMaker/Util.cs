@@ -19,9 +19,18 @@ namespace CatWorx.BadgeMaker //namespace
             if ( !Directory.Exists("data"))
             {   //if doesn't exist create directory
                 Directory.CreateDirectory("data");
+                //use StreamWRiter to write a new .csv file of employees
                 using (StreamWriter file = new StreamWriter("data/employees.csv"))
-                {
+                {   //write "ID, Nmae, and PhotoUrl" into file
                     file.WriteLine("ID,Name,PhotoUrl");
+
+                    //loop over employees
+                    for (int i = 0; i < employees.Count; i++)
+                    {
+                        //write each employee to the csv file 
+                        string employeeTemplate = "{0},{1},{2}";
+                        file.WriteLine(String.Format(employeeTemplate, employees[i].GetId(), employees[i].GetFullName(), employees[i].GetPhotoUrl()));                        
+                    }
                 }
             }
         }
