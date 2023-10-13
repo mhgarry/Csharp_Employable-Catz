@@ -36,6 +36,7 @@ namespace CatWorx.BadgeMaker //our entry point to our file. Like a container to 
         {
             List<Employee> employees = GetEmployees(); //Starts our get employees function method when called as an argument and returns our list of employees
             Util.PrintEmployees(employees); //recieves our list of employees from our GetEmployees() method and prints them to the console
+            Util.MakeCSV(employees); //generates our CSV file with our list of employees
         }
     }
 }

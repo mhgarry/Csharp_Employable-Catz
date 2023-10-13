@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace CatWorx.BadgeMaker //namespace
 {
     class Util //class for utility methods/functions
@@ -10,8 +13,10 @@ namespace CatWorx.BadgeMaker //namespace
                 Console.WriteLine(String.Format(employeeTemplate, employees[i].GetId(), employees[i].GetFullName(), employees[i].GetPhotoUrl())); //write each indexed employee and their information individually to the console 
             }
         }
-        //create a method to make a csv file
-        //call the method in the Program.cs file and pass the employee info list into it
+        public static void MakeCSV(List<Employee> employees)
+        {
+            //where we'll make our csv file
+        }
         //create a data folder
         //create a file in the data folder to hold the csv file called employees.csv
         //Loop over the given employeees 
