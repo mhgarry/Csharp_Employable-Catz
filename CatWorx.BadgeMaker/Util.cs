@@ -10,7 +10,7 @@ namespace CatWorx.BadgeMaker //namespace
     {
         public static void PrintEmployees(List<Employee> employees) //declared method as static which means it belongs to util class 
         {
-             for (int i = 0; i < employees.Count; i++) //iterate through the list of employees
+            for (int i = 0; i < employees.Count; i++) //iterate through the list of employees
             {
                 string employeeTemplate = "{0, -10}\t{1, -20}\t{2}"; //formatting our templated string
                 Console.WriteLine(String.Format(employeeTemplate, employees[i].GetId(), employees[i].GetFullName(), employees[i].GetPhotoUrl())); //write each indexed employee and their information individually to the console 
@@ -19,7 +19,7 @@ namespace CatWorx.BadgeMaker //namespace
         public static void MakeCSV(List<Employee> employees)
         {
             // check if data directory exists
-            if ( !Directory.Exists("data"))
+            if (!Directory.Exists("data"))
             {   //create directory if doesn't exist
                 Directory.CreateDirectory("data");
                 //use streamwriter to make a file called employees.csv
@@ -30,13 +30,21 @@ namespace CatWorx.BadgeMaker //namespace
                     for (int i = 0; i < employees.Count; i++)
                     {
                         //write each employee to csv file
-                    string badgeTemplate = "{0},{1},{2}";// make a badge template using the 3 arguemnts representing id, name, and photourl
-                    file.WriteLine(String.Format(badgeTemplate, employees[i].GetId(), employees[i].GetFullName(), employees[i].GetPhotoUrl()));
+                        string badgeTemplate = "{0},{1},{2}";// make a badge template using the 3 arguemnts representing id, name, and photourl
+                        file.WriteLine(String.Format(badgeTemplate, employees[i].GetId(), employees[i].GetFullName(), employees[i].GetPhotoUrl()));
                     }
                 }
             }
         }
-    
+        // public static void MakeBadges(List<Employee> employees)
+        // {
+        //     //Create iamge
+        //     SKImage newImage = SKImage.FromEncodedData(File.OpenRead("badge.png"));
+        //     //encode the image to save it to a stream
+        //     SKData data = newImage.Encode();
+        //     // write data to file employeeBadge.png 
+        //     data.SaveTo(File.OpenWrite("data/employeeBadge.png"));
+        // }
     }
 }
 
