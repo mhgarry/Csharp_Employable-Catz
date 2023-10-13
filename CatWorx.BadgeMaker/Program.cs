@@ -35,6 +35,9 @@ namespace CatWorx.BadgeMaker //our entry point to our file. Like a container to 
         }
         async static Task Main(string[] args) //our entry point to our program that will consume both of our methods to make a program that takes input from the console and prints it out
         {
+            Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
+
+
             List<Employee> employees = GetEmployees(); //Starts our get employees function method when called as an argument and returns our list of employees
             Util.PrintEmployees(employees); //recieves our list of employees from our GetEmployees() method and prints them to the console
             Util.MakeCSV(employees); //generates our CSV file with our list of employees
