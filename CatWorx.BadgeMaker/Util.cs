@@ -37,24 +37,22 @@ namespace CatWorx.BadgeMaker //namespace
             }
         }
         async public static Task MakeBadges(List<Employee> employees)
-        {  
-           //makes an instance of the http client that is disposed after codeblock runs
-           using(HttpClient client = new HttpClient()) //used to make url into a stream of data to be handled by the SKImage library to create an image
-           {
-            for (int i = 0; i < employees.Count; i++)
+        {
+            //makes an instance of the http client that is disposed after codeblock runs
+            using (HttpClient client = new HttpClient()) //used to make url into a stream of data to be handled by the SKImage library to create an image
             {
-                // convert url into skimage
-                //convert badge template into skimage
-                // place image on canvas
+                for (int i = 0; i < employees.Count; i++)
+                {   // define an SKImage called phto that awaits the stream of data from the HttpClient specified in employees[i].GetPhotoUrl()
+                    SKImage photo = SKImage.FromEncodedData(await client.GetStreamAsync(employees[i].GetPhotoUrl()));
+                    //specify that this is the background image of our badge
+                    SKImage background = SKImage.FromEncodedData(File.OpenRead("badge.png"));
+                    //defining SKdata called data which will be the encoded photo that we will use to write and save to our file
+                    SKData data = background.Encode();
+                    //save and write photo to file called "data/employeeBadge.png")
+                    data.SaveTo(File.OpenWrite("data/employeeBadge.png"));                    
+                }
             }
-           }
-        //    //make new image 
-        //    SKImage newImage = SKImage.FromEncodedData(File.OpenRead("badge.png"));
-        //    //Encode image into writable data
-        //    SKData data = newImage.Encode();
-        //    //save data to a new file called employeeBadge.png
-        //    data.SaveTo(File.OpenWrite("data/employeeBadge.png"));
-        // }
+        }
     }
-}
 
+}
